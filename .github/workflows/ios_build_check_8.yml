@@ -1,0 +1,25 @@
+name: iOS Build Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'  # Change if you're using another version
+
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: serplus_food_redistibution_app
+
+      - name: Build iOS (no code signing)
+        run: flutter build ios --no-codesign
+        working-directory: serplus_food_redistibution_app
