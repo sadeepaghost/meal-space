@@ -1,6 +1,3 @@
-- name: Change to project directory
-  run: cd my_flutter_project
-
 - name: Install Dependencies
   run: flutter pub get
   working-directory: my_flutter_project
